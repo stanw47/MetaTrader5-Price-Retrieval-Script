@@ -20,27 +20,27 @@ print(mt5.version())
 # request 1000 ticks from GBPUSD 
 gbpusd_ticks = mt5.copy_ticks_from("GBPUSD", datetime(2020,1,28,13), 1000, mt5.COPY_TICKS_ALL)
 # request ticks from GBPJPY within 2019.04.01 13:00 - 2019.04.02 13:00
-gbpjpy_ticks = mt5.copy_ticks_range("AUDUSD", datetime(2020,1,27,13), datetime(2020,1,28,13), mt5.COPY_TICKS_ALL)
+gbpusdticks = mt5.copy_ticks_range("GBPUSD", datetime(2020,1,27,13), datetime(2020,1,28,13), mt5.COPY_TICKS_ALL)
  
 # get bars from different symbols in 3 different ways
-gbpusd_rates = mt5.copy_rates_from("EURUSD", mt5.TIMEFRAME_M1, datetime(2020,1,28,13), 1000)
-gbpusd_rates = mt5.copy_rates_from_pos("EURGBP", mt5.TIMEFRAME_M1, 0, 1000)
-gbpusd_rates = mt5.copy_rates_range("EURCAD", mt5.TIMEFRAME_M1, datetime(2020,1,27,13), datetime(2020,1,28,13))
+gbpusd_rates = mt5.copy_rates_from("GBPUSD", mt5.TIMEFRAME_M1, datetime(2020,1,28,13), 1000)
+gbpusd_rates = mt5.copy_rates_from_pos("GBPUSD", mt5.TIMEFRAME_M1, 0, 1000)
+gbpusd_rates = mt5.copy_rates_range("GBPUSD", mt5.TIMEFRAME_M1, datetime(2020,1,27,13), datetime(2020,1,28,13))
  
 # shut down connection to MetaTrader 5
 mt5.shutdown()
  
 #data to be displayed in the terminal
-print('gbpusd_ticks(', len(euraud_ticks), ')')
+print('gbpusd_ticks(', len(gbpusd_ticks), ')')
 for val in gbpusd_ticks[:1000]: print(val)
  
-print('gbpjpy_rates(', len(eurusd_rates), ')')
-for val in eurusd_rates[:1000]: print(val)
+print('gbpusd_rates(', len(gbpusd_rates), ')')
+for val in gbpusd_rates[:1000]: print(val)
   
 #PLOT
 # create DataFrame out of the obtained data
 ticks_frame = pd.DataFrame(gbpusd_ticks)
-ticks_frame = pd.DataFrame(gbpjpy_ticks)
+ticks_frame = pd.DataFrame(gbpusd_ticks)
 # display ticks on the chart
 plt.plot(ticks_frame['time'], ticks_frame['ask'], 'r-', label='ask')
 plt.plot(ticks_frame['time'], ticks_frame['bid'], 'b-', label='bid')
