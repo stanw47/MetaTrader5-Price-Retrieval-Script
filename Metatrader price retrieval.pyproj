@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>Metatrader price retrieval</Name>
     <RootNamespace>Metatrader price retrieval</RootNamespace>
-    <InterpreterId>CondaEnv|CondaEnv|Anaconda3</InterpreterId>
+    <InterpreterId>Global|ContinuumAnalytics|Anaconda37-64</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
